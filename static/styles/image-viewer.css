@@ -1,0 +1,338 @@
+/* 
+ * Image Viewer Styles
+ * Handles the main image display and navigation
+ */
+
+/* Empty gallery state styling */
+.no-img {
+  position: relative;
+  height: 500px;
+  width: 100%;
+}
+
+/* Main image viewer container */
+.img-viewer {
+  display: flex;
+  align-items: stretch;
+}
+
+/* Copilot usage
+Prompt: "For .no-img, I want the background image to be opaque while the text is
+on top of it, not affected by the opacity*/
+.no-img::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background: url("../media/no-img.jpg") no-repeat;
+  background-position-x: 20%;
+  background-size: contain;
+  opacity: 0.6;
+}
+
+/* Text displayed when gallery is empty */
+.no-img-text {
+  position: absolute;
+  top: 82%;
+  left: 34%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+/* meta-area column container for image metadata */
+.meta-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: inherit;
+}
+
+/* 
+ * Image metadata wrapper - stylized container with background image
+ * Contains title, author, and date information
+ */
+.img-meta-wrapper {
+  background: url("../media/img-meta-bg.jpg") no-repeat;
+  background-size: cover;
+
+  height: 300px;
+  width: 50%;
+  padding: 5px;
+  margin-left: auto;
+  margin-top: 30px;
+  margin-right: 20px;
+}
+
+/* Inner content area for image metadata */
+.img-meta-content {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  width: 100%;
+  padding: 10px 15px;
+  border: black solid 1px;
+
+  color: black;
+}
+
+.img-meta-content .head-title {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.img-meta-content .head-author-date {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: auto;
+  margin-bottom: 10px;
+
+  font-family: "Courier New", Courier, monospace;
+  font-size: 14px;
+}
+
+.head-author,
+.head-date {
+  margin-top: 15px;
+  line-height: 1.5;
+  border-bottom: 1.3px dashed black;
+}
+
+/* Image container - holds the main displayed image */
+.img-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: inherit;
+  width: 100%;
+
+  margin: 20px 0;
+  padding: 0 10px;
+  border-left: 1.3px dashed black;
+  border-right: 1.3px dashed black;
+}
+
+/* Main image display styling with shadow effect */
+.head-img {
+  display: block;
+  height: auto;
+  max-width: 90%;
+  padding: 2px;
+  margin: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Image counter display with monospace font */
+.img-nav-meta {
+  font-family: "courier new", monospace;
+  text-align: center;
+  margin-bottom: 0.5%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.btn.nav {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #e7e7e7;
+  background-size: 50%;
+
+  margin-bottom: 0;
+  border-radius: 25px;
+
+  max-width: 4%;
+  position: relative;
+}
+
+/*
+Copilot usage (lines 237-276)
+Prompt: "Suppress hover animation when there is no previous/next image or when there is no previous/next page in comments"
+*/
+/* Hover effect for navigation buttons - only when not disabled */
+.btn.nav:not(.disabled):hover {
+  background-color: #d1d1d1;
+  transform: scale(1.1);
+}
+
+.btn.nav:not(.disabled):active {
+  transform: scale(0.95);
+}
+
+/* Styles for disabled navigation buttons */
+.btn.nav.disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* Custom tooltip styles for navigation buttons */
+.btn.nav:not(.disabled):hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.delete-image {
+  background-image: url("../media/delete-img.png");
+  margin: 0 25px;
+}
+
+/* 
+ * Image navigation container
+ * Holds the navigation buttons and image counter
+ */
+.img-nav {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Navigation buttons group container */
+.nav-buttons-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Bottom border for the image counter column */
+.img-nav .col-3 {
+  border-bottom: dashed 1.4px black;
+}
+
+/* 
+ * Mobile Responsive Styles
+ * Adjustments for small screens (max-width: 576px)
+ */
+@media (max-width: 576px) {
+  .img-container {
+    width: 100%;
+    padding: 0 25px;
+    border: none;
+    margin: 0;
+  }
+
+  .head-img {
+    max-width: 100%;
+  }
+
+  .meta-area {
+    width: 100%;
+    margin: 0;
+    padding: 0 25px;
+  }
+
+  .img-meta-wrapper {
+    width: 100%;
+    margin: 10px auto;
+    height: 100px;
+  }
+
+  .head-author-date {
+    width: 50%;
+    align-items: flex-end;
+    margin-top: 0;
+  }
+
+  /* Ensure title and author sections are properly positioned on mobile */
+  .img-meta-content {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .img-meta-content .head-title {
+    font-size: 18px;
+    max-width: 50%;
+  }
+
+  .img-meta-content .head-author-date {
+    align-items: flex-end;
+    align-self: flex-start;
+    margin-top: 0;
+  }
+
+  .head-author,
+  .head-date {
+    margin-top: 5px;
+    text-align: right;
+    width: 100%;
+  }
+
+  /* Enlarge navigation buttons for better touch targets */
+  .btn.nav {
+    max-width: 12%;
+    height: 25px;
+    background-size: 30%;
+  }
+
+  /* Center the image navigation on mobile */
+  .img-nav {
+    justify-content: center;
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .nav-wrapper {
+    padding: 10px 0 5px 0;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .img-nav-meta {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  /* Group navigation buttons closer together on mobile */
+  .prev-image,
+  .next-image {
+    margin: 0;
+  }
+
+  /* Add a container for navigation buttons to keep them together */
+  .img-nav .btn.nav.prev-image + .btn.nav.next-image {
+    margin-left: 5px;
+  }
+
+  /* Style the navigation buttons group for mobile */
+  .nav-buttons-group {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    gap: 5px; /* Space between buttons */
+  }
+}

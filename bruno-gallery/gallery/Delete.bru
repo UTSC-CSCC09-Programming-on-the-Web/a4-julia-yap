@@ -1,0 +1,15 @@
+meta {
+  name: Delete
+  type: http
+  seq: 5
+}
+
+delete {
+  url: http://localhost:3001/api/galleries/5
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJqamFuZyIsImp0aSI6IjMxMjE2YzE0LTc1NmMtNDYwMi1hOGYzLTA4ZDI2NzE0YmUxNiIsImlhdCI6MTc1MDczMTg2MiwiZXhwIjoxNzUwNzM1NDYyfQ.L4x2Pr2RRdT_2Jk5fpdVDBNbCJj6pQ_xqokvRsVRDr4
+}

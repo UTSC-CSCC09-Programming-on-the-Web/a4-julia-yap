@@ -1,0 +1,18 @@
+meta {
+  name: Signin
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:3001/api/auth/signin
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "username": "jjang",
+    "password": "pw123"
+  }
+}

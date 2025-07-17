@@ -1,0 +1,15 @@
+meta {
+  name: Delete
+  type: http
+  seq: 3
+}
+
+delete {
+  url: http://localhost:3001/api/comments/15
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJqamFuZyIsImp0aSI6ImZiM2ZlMDg4LWNhZDUtNGMwYi1hYThkLWY1YjZkNTFiYzkzMyIsImlhdCI6MTc1MDczNDAzMywiZXhwIjoxNzUwNzM3NjMzfQ.R7cF1YdEJkf2W9npfxhJgZpApA5rZCSuAVIVdqvgKc0
+}

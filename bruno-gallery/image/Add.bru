@@ -1,0 +1,24 @@
+meta {
+  name: Add
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:3001/api/galleries/7/images/
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJqamFuZyIsImp0aSI6ImQyYmUzNjY4LTU4NjYtNGI4ZC1iNWFlLWQ2NGFkYjU1NzUxZSIsImlhdCI6MTc1MDczMjcxMSwiZXhwIjoxNzUwNzM2MzExfQ.PZRuKg2NsLcfAhjbPiKUr_CAz0jw4RJNJIiEAmvLlow
+}
+
+body:multipart-form {
+  title: 1
+  file: @file(/Users/ypark/Downloads/number-1.png)
+}
+
+body:file {
+  file: @file(/Users/ypark/Desktop/Screenshot 2025-06-18 at 16.03.30.png) @contentType(image/png)
+}

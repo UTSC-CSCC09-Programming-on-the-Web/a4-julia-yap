@@ -1,0 +1,21 @@
+meta {
+  name: Post
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:3001/api/comments/6
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidXNlcm5hbWUiOiJqaW4iLCJqdGkiOiJlYWY0YjJkOS1jMDQ5LTQzZWMtODIyZC1iMmZkMDhhNjM1ZmEiLCJpYXQiOjE3NTA3MzM3NTEsImV4cCI6MTc1MDczNzM1MX0.JTQdhaBkoWFFRtsi3mbdtBVeim1rwqW1GXz5HKK0bDI
+}
+
+body:json {
+  {
+    "content": "ee"
+  }
+}

@@ -1,0 +1,185 @@
+/*
+ * Form Styles
+ * Contains styling for all forms and form elements in the gallery application
+ * Includes image upload form, comment form, and related UI components
+ */
+
+/* Utility class to hide elements - uses !important to override other display properties */
+.hidden {
+  /* Copilot added '!important'
+    Prompt: "I need the add-img button to be styled by .hidden, but 'display:flex' in .btn hinders this."*/
+  display: none !important;
+}
+
+/* Copilot help with all sliding animiations. (lines 16~53)
+Prompt: How to make image form slide once the new image button is clicked?*/
+.submit-img {
+  position: fixed;
+  top: 0;
+  right: -300px; /* Start off-screen */
+  width: 300px;
+  height: 100%;
+  background-color: white;
+  padding: 20px;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: right 0.3s ease-in-out;
+  overflow-y: auto;
+}
+
+/* Overlay for modal effect */
+.form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.form-overlay.active {
+  opacity: 1;
+}
+
+.submit-img.slide-in {
+  right: 0; /* Slide in to visible area */
+}
+
+/* Generic form container with centered flex layout */
+.form-generic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Form title styling with clean, modern typography */
+.submit-img .form-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Form close button with rotation animation on hover */
+.close-form {
+  background: none;
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
+  color: #777;
+  transition: all 0.3s ease;
+}
+
+.close-form:hover {
+  color: black;
+  transform: rotate(90deg);
+}
+
+.img-form .file-input {
+  width: 90%;
+  margin: 5px 0;
+
+  border: none;
+
+  font-family: "Courier New", monospace;
+  font-size: 16px;
+}
+
+/* Text input styling for image upload form with dashed underline effect */
+.text-input {
+  width: 90%;
+  padding: 10px;
+  margin: 5px 0;
+
+  border: none;
+  border-bottom: 1.3px dashed black;
+
+  font-family: "Courier New", monospace;
+  font-size: 16px;
+}
+
+/* Upload button with hover and active state animations */
+.upload-img {
+  background-color: black;
+  color: #e7e7e7;
+  margin: 20px 5px;
+  width: 90%;
+}
+
+/* Form error styling */
+.form-error {
+  color: #d73527;
+  background-color: #ffeaea;
+  border: 1px solid #d73527;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin-top: 5px;
+  font-size: 14px;
+  display: block;
+}
+
+/* Update submit form styling for new form types */
+.submit-form {
+  position: fixed;
+  top: 0;
+  right: -300px; /* Start off-screen */
+  width: 300px;
+  height: 100%;
+  background-color: white;
+  padding: 20px;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: right 0.3s ease-in-out;
+  overflow-y: auto;
+}
+
+/* Slide in animation */
+.submit-form.slide-in {
+  right: 0;
+}
+
+/* Form overlay improvements for multiple forms */
+.form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.form-overlay.active {
+  opacity: 1;
+}
+
+/* Responsive form styling */
+@media (max-width: 768px) {
+  .submit-form {
+    width: 80%;
+    right: -80%;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Make the form slide in from the right take up more space */
+  .submit-img {
+    width: 80%;
+    right: -80%;
+  }
+}

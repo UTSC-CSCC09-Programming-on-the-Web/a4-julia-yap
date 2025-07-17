@@ -1,0 +1,104 @@
+/* Header Component Styles */
+
+.app-header {
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: static;
+  width: 100%;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.8rem 1rem;
+}
+
+/* Logo */
+.header-logo {
+  flex: 0 0 auto;
+}
+
+.logo-link {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #333;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.logo-link:hover {
+  color: #4a90e2;
+}
+
+/* Navigation */
+.header-nav {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+}
+
+/* Authentication section */
+.header-auth {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-greeting {
+  margin-right: 10px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Buttons */
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition:
+    background-color 0.2s,
+    opacity 0.2s;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn-primary {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    padding: 0.5rem;
+  }
+
+  .header-logo {
+    margin-bottom: 0.5rem;
+  }
+
+  .header-nav {
+    margin: 0.5rem 0;
+  }
+
+  .header-auth {
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+}

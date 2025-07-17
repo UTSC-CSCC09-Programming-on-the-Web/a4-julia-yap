@@ -1,0 +1,211 @@
+openapi: 3.0.0
+info:
+  title: Gallery App API
+  version: 1.0.0
+  description: OpenAPI specification for the CSCC09 Assignment 3 Gallery App backend.
+servers:
+  - url: http://localhost:3000
+
+paths:
+  /api/auth/login:
+    post:
+      summary: User login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        "200":
+          description: Login successful
+        "401":
+          description: Invalid credentials
+
+  /api/auth/logout:
+    post:
+      summary: User logout
+      responses:
+        "200":
+          description: Logout successful
+
+  /api/galleries:
+    get:
+      summary: Get all galleries
+      responses:
+        "200":
+          description: List of galleries
+    post:
+      summary: Create a new gallery
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GalleryInput"
+      responses:
+        "201":
+          description: Gallery created
+
+  /api/galleries/{galleryId}:
+    get:
+      summary: Get a gallery by ID
+      parameters:
+        - in: path
+          name: galleryId
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Gallery details
+        "404":
+          description: Not found
+    put:
+      summary: Update a gallery
+      parameters:
+        - in: path
+          name: galleryId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GalleryInput"
+      responses:
+        "200":
+          description: Gallery updated
+    delete:
+      summary: Delete a gallery
+      parameters:
+        - in: path
+          name: galleryId
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Gallery deleted
+
+  /api/galleries/{galleryId}/images:
+    get:
+      summary: Get images for a gallery
+      parameters:
+        - in: path
+          name: galleryId
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: List of images
+    post:
+      summary: Add an image to a gallery
+      parameters:
+        - in: path
+          name: galleryId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                imgFile:
+                  type: string
+                  format: binary
+      responses:
+        "201":
+          description: Image added
+
+  /api/galleries/{galleryId}/images/{imageId}:
+    delete:
+      summary: Delete an image from a gallery
+      parameters:
+        - in: path
+          name: galleryId
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: imageId
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Image deleted
+
+  /api/comments:
+    get:
+      summary: Get comments for an image
+      parameters:
+        - in: query
+          name: imageId
+          required: true
+          schema:
+            type: integer
+        - in: query
+          name: page
+          required: false
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: List of comments
+    post:
+      summary: Add a comment to an image
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CommentInput"
+      responses:
+        "201":
+          description: Comment added
+
+  /api/comments/{commentId}:
+    delete:
+      summary: Delete a comment
+      parameters:
+        - in: path
+          name: commentId
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Comment deleted
+
+components:
+  schemas:
+    GalleryInput:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+    CommentInput:
+      type: object
+      properties:
+        imageId:
+          type: integer
+        userId:
+          type: integer
+        content:
+          type: string
